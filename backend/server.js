@@ -37,10 +37,11 @@ const drawingsRoutes = require("./routes/drawings");
 app.use("/auth", authRoutes);
 app.use("/library", libraryRoutes);
 app.use("/drawings", drawingsRoutes);
-
+app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 // مسار اختباري
 app.get("/", (req, res) => {
   res.json({ message: "Simple-site backend running" });
 });
+
 
 app.listen(PORT, () => console.log(`✅ Backend running on port ${PORT}`));
